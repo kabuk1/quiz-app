@@ -1,73 +1,71 @@
 import javax.swing.JOptionPane;
 
 public class Quiz {
-	
-	static int nQuestions = 0;
-	static int nCorrect = 0;
-	
-	static String question;
 
 	public static void main(String[] args) {
-		// question 1
-		String question = "Which mascot represents the Philadelphia 76ers?\n";
-		question += "A. Phillie Phanatic\n";
-		question += "B. Gritty\n";
-		question += "C. Franklin\n";  // correct answer
-		question += "D. Swoop\n";
-		question += "E. Phang\n";
-		
-		check(question, "C");
-		
-		// question 2
-		question = "Which professional sports team in Philadelphia were known as the Broad Street Bullies?\n";
-		question += "A. Flyers\n"; // correct answer
-		question += "B. Eagles\n";
-		question += "C. 76ers\n";
-		question += "D. Union\n";
-		question += "E. Phillies\n";
-		
-		check(question, "A");
-		
-		// question 3
-		question = "In the film Invincible, which Philadelphia team did Vince Papale play for?\n";
-		question += "A. Phillies\n";
-		question += "B. Flyers\n";
-		question += "C. Union\n"; 
-		question += "D. Eagles\n"; //correct answer
-		question += "E. 76ers\n";
-		
-		check(question, "D");
-
-		JOptionPane.showMessageDialog(null, nCorrect + " correct out of " + nQuestions + ".");
+		//"MultipleChoiceQuestion" constructor with 5 quiz questions
+				// question 1
+				MultipleChoiceQuestion question1 = new MultipleChoiceQuestion (
+						"Which mascot represents the Philadelphia 76ers?",
+						"Phillie Phanatic",
+						"Gritty",
+						"Franklin", //correct answer c
+						"Swoop",
+						"Phang",
+						"c");
+				
+				// question 2
+				MultipleChoiceQuestion question2 = new MultipleChoiceQuestion (
+						"Which professional sports team in Philadelphia were known as the Broad Street Bullies?",
+						"Flyers", // correct answer a
+						"Eagles",
+						"76ers",
+						"Union",
+						"Phillies",
+						"a");		
+						
+				// question 3
+				MultipleChoiceQuestion question3 = new MultipleChoiceQuestion (
+						"In the film Invincible, which Philadelphia team did Vince Papale play for?",
+						"Phillies",
+						"Flyers",
+						"Union", 
+						"Eagles", //correct answer d
+						"76ers",
+						"d");		
+				
+				// question 3
+				MultipleChoiceQuestion question4 = new MultipleChoiceQuestion (
+						"Which Philadelphia sports team won a championship in 1983?",
+						"Phillies",
+						"Flyers",
+						"Union", 
+						"Eagles", 
+						"76ers",  //correct answer e
+						"e");
+						
+				// question 3
+				MultipleChoiceQuestion question5 = new MultipleChoiceQuestion (
+						"World B. Free was the legal name of a player on which 1970s Philly sports team?",
+						"Phillies",
+						"76ers",  //correct answer b
+						"Union", 
+						"Eagles", 
+						"Flyers",
+						"b");
+				
+				// use a "MultipleChoiceQuestion" object to call the "check" method
+				// Ask all questions and check answers
+				question1.check();
+				question2.check();
+				question3.check();
+				question4.check();
+				question5.check();
+				
+				// uses the "MultipleChoiceQuestion" class to call the "showResults" class method
+				// Show results after all questions are answered
+				MultipleChoiceQuestion.showResults();
 		
 	}
-	
-	// method asks question until a valid answer is received
-	static String ask(String question) {
-		
-		while (true) {
-			String answer = JOptionPane.showInputDialog(question).toUpperCase();
-			
-			// Check for valid input
-			boolean valid = (answer.equals("A") || answer.equals("B") || answer.equals("C") || answer.equals("D") || answer.equals("E"));
-			if (valid) return answer; 
-			// Notify user of invalid answer
-			JOptionPane.showMessageDialog(null,"Invalid answer. Please enter A, B, C, D or E.");
-		}
-	}
-	
-	// method checks if the answer is correct
-	static void check (String question, String correctAnswer) {
-		nQuestions ++; // increment question
-		String answer = ask(question);
-		
-		if(answer.equals(correctAnswer)) {
-			nCorrect ++; // increment correct answers
-			JOptionPane.showMessageDialog(null,"Correct!");	
-		} else {
-			JOptionPane.showMessageDialog(null,"The correct answer is " + correctAnswer + ".");	
-		}
-		
-	}
-	
 }
+	
