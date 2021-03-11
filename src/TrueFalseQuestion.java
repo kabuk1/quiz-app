@@ -5,7 +5,6 @@ public class TrueFalseQuestion extends Question {
 	@Override
 	String ask() {
 		while (true) {
-			// asks the question and converts to upper case
 			String answer = JOptionPane.showInputDialog(question).toUpperCase();
 			// checks for a valid answer
 			boolean valid = (

@@ -3,7 +3,6 @@ import javax.swing.JOptionPane;
 // defines the class "MultipleChoiceQuestion" as a subclass of "Question"
 public class MultipleChoiceQuestion extends Question {
 	
-	// constructor with 7 String parameters
 	MultipleChoiceQuestion(String query, String a, String b, String c, String d, String e, String answer) {
 		question = query+"\n";	// initialize the instance variables
 	    question += "A. "+a+"\n";
