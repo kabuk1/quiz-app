@@ -1,7 +1,9 @@
+import javax.swing.JOptionPane;
+
 public class Quiz {
 
 	public static void main(String[] args) {
-<<<<<<< Updated upstream
+
 		// Create strings for question and choices
 		String question = "Which mascot represents the Philadelphia 76ers?\n";
 		question += "A. Phillie Phanatic\n";
@@ -31,7 +33,7 @@ public class Quiz {
 				JOptionPane.showMessageDialog(null,"Invalid answer. Please enter A, B, C, D or E.");
 			}
 		}
-=======
+
 		//"Question" constructor for "MultipleChoiceQuestion
 		// question 1
 		Question questionOne = new MultipleChoiceQuestion (
@@ -127,6 +129,5 @@ public class Quiz {
 		// Show results after all questions are answered
 		Question.showResults();
 
->>>>>>> Stashed changes
 	}
 }
