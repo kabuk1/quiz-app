@@ -1,31 +1,44 @@
-import javax.swing.JOptionPane;
+import java.awt.*;
+import javax.swing.*;
 
-// defines the class "MultipleChoiceQuestion" as a subclass of "Question"
 public class MultipleChoiceQuestion extends Question {
 	
 	MultipleChoiceQuestion(String query, String a, String b, String c, String d, String e, String answer) {
-		question = query+"\n";	// initialize the instance variables
-	    question += "A. "+a+"\n";
-	    question += "B. "+b+"\n";
-	    question += "C. "+c+"\n";
-	    question += "D. "+d+"\n";
-	    question += "E. "+e+"\n";
+		super(query); //constructor that calls its superclass constructor with its first parameter
 	    
-	    correctAnswer = answer.toUpperCase(); // converts correct answer to upper case
+		//calls "addChoice" using its next five parameters
+		addChoice("A", a);
+		addChoice("B", b);
+		addChoice("C", c);
+		addChoice("D", d);
+		addChoice("E", e);
+		
+		//calls "initQuestionDialog"
+		initQuestionDialog(); 
+	    
+		//initializes the instance variable "correctAnswer"
+	    correctAnswer = answer.toUpperCase(); 
 	}
 	
-	// method "ask" 
-	String ask() {
-
-		while (true) {
-			// asks the question and converts to upper case
-			String answer = JOptionPane.showInputDialog(question).toUpperCase();
-			// checks for a valid answer
-			boolean valid = (answer.equals("A") || answer.equals("B") || answer.equals("C") || answer.equals("D") || answer.equals("E"));
-			// returns a valid answer in upper case
-			if (valid) return answer;
-			JOptionPane.showMessageDialog(null,"Invalid answer. Please enter A, B, C, D, or E.");
-		}
+	//method "addChoice" 
+	void addChoice(String name, String label) {
+		//creates a panel with a border layout
+		JPanel choice = new JPanel(new BorderLayout());  
+			
+		//creates a button using its first String parameter
+		JButton button = new JButton(name);  
+			
+		//adds the instance variable "question" as a listener for that button
+		button.addActionListener(question); 
+			
+		//adds the button to the left side of the panel
+		choice.add(button,BorderLayout.WEST); 
+			
+		//adds a label to the center of the panel using its second String parameter
+		choice.add(new JLabel(label+" ",JLabel.LEFT),BorderLayout.CENTER);  
+			
+		//adds the panel to the instance variable "question"
+		question.add(choice);
 	}
 	
 }
