@@ -1,24 +1,24 @@
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 public class TrueFalseQuestion extends Question {
-
-	@Override
-	String ask() {
-		while (true) {
-			String answer = JOptionPane.showInputDialog(question).toUpperCase();
-			// checks for a valid answer
-			boolean valid = (
-					answer.equals("F") || answer.equals("FALSE") || answer.equals("N") || answer.equals("NO") ||
-					answer.equals("T") || answer.equals("TRUE") || answer.equals("Y") || answer.equals("YES"));
-			// returns a valid TRUE or FALSE in upper case
-			if (valid) return (answer.equals("F") || answer.equals("FALSE") || answer.equals("N") || answer.equals("NO")) ? "FALSE" : "TRUE";
-
-			JOptionPane.showMessageDialog(null,"Invalid answer. Please enter TRUE or FALSE.");
-		}
-	}
 	
 	TrueFalseQuestion(String question, String answer) { 
-		this.question = "TRUE or FALSE: "+question; 
+		super(question);  //constructor that calls its superclass constructor
+		JPanel buttons = new JPanel();
+		
+		//calls "addButton" to add "TRUE" and "FALSE" buttons to a panel
+		addButton(buttons, "TRUE");
+		addButton(buttons, "FALSE");
+		
+		//adds that panel to the instance variable "question"
+		this.question.add(buttons);
+		
+		//calls "initQuestionDialog"
+		initQuestionDialog();  
+		
+		//initializes the instance variable "correctAnswer"
+		answer = answer.toUpperCase();  
+		
 		this.correctAnswer = answer; 
 		
 		// correct answer is initialized to only "TRUE" or "FALSE"
@@ -27,5 +27,12 @@ public class TrueFalseQuestion extends Question {
 		if (answer.equals("F") || answer.equals("FALSE") || answer.equals("N") || answer.equals("NO")) 
 			correctAnswer = "FALSE";
 	}
+	
+		//method "addButton" 
+		void addButton(JPanel buttons, String label) {
+			JButton button = new JButton(label);
+			button.addActionListener(question);  //adds the instance variable "question" as a listener
+			buttons.add(button);  //adds the button to its "JPanel" parameter
+		}
 
 }
