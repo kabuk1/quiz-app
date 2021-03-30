@@ -19,8 +19,6 @@ public class TrueFalseQuestion extends Question {
 		//initializes the instance variable "correctAnswer"
 		answer = answer.toUpperCase();  
 		
-		this.correctAnswer = answer; 
-		
 		// correct answer is initialized to only "TRUE" or "FALSE"
 		if (answer.equals("T") || answer.equals("TRUE") || answer.equals("Y") || answer.equals("YES")) 
 			correctAnswer = "TRUE";
