@@ -1,4 +1,5 @@
 # Quiz App
+![GitHub](https://img.shields.io/github/license/kabuk1/quiz-app)
 
 This is a simple desktop quiz application completed as part of JAVA course and uses the Swing and Awt GUI framework. The GUI displays a set of multiple choice and true/false questions. Users answer each question by clicking on one of the button choices. The program notifies the user if their answer is correct or incorrect. At the end of the quiz, the total score will be displayed on the screen to the user.
 
